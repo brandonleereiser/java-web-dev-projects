@@ -10,12 +10,11 @@ public class CountingCharacters {
     public static void main(String[] args) {
 
         HashMap<String, Double> counts = new HashMap<>();
-        String quote = "Hello test, How are you?S";
+        String quote = "Hello test, How are you?";
         char[] charactersInQuote = quote.toCharArray();
 
         for (char character : charactersInQuote) {
             if (counts.containsKey(String.valueOf(character))) {
-                //TODO: add 1 to key's value
                 Double value = counts.get(String.valueOf(character));
                 value = value + 1;
                 counts.put(String.valueOf(character), value);
