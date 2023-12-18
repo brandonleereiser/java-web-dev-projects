@@ -6,66 +6,69 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BalancedBracketsTest {
     //TODO: add tests here
-    @Test
-    public void emptyTest() {
-        assertEquals(true, true);
+    String test_word;
+    @BeforeEach
+    public void createTestWord() {
+        test_word = "[Banana]";
     }
 
     @Test
-    public void onlyBracketsReturnsTrue(){
+    public void onlyBracketsReturnsTrue() {
         assertTrue(BalancedBrackets.hasBalancedBrackets("[]"));
     }
 
+    // write codes below here:
     @Test
-    public void testOrderOfBrackets(){
-        assertFalse(BalancedBrackets.hasBalancedBrackets("]["));
+    public void nullTest() {
+        assertNotNull(test_word);
     }
 
     @Test
-    public void testHasPairOfBracketsEnd(){
+    public void oneBracketReturnsFalse() {
         assertFalse(BalancedBrackets.hasBalancedBrackets("["));
     }
     @Test
-    public void testHasPairOfBracketsStart(){
+    public void oneBracketsReturnsFalse() {
         assertFalse(BalancedBrackets.hasBalancedBrackets("]"));
     }
+
     @Test
-    public void testNothingIsTrue(){
-        assertTrue(BalancedBrackets.hasBalancedBrackets(""));
+    public void onlyBracketsReturnsTrue() {
+        assertnotNull(BalancedBrackets.hasBalancedBrackets("[]"));
     }
 
     @Test
-    public void testMixedUpBracketsAfterCorrectOnes(){
-        assertFalse(BalancedBrackets.hasBalancedBrackets("[]]["));
+    public void onlyBracketsReturnsTrue() {
+        assertEquals(BalancedBrackets.hasBalancedBrackets("[]", "[]"));
+    }
+    @Test
+    public void noBrackets() {
+        String bracketless = "Nope";
+        assertFalse(BalancedBrackets.hasBalancedBrackets(bracketless));
     }
 
     @Test
-    public void testNoBracketsWithWordsIsTrue(){
-        assertTrue(BalancedBrackets.hasBalancedBrackets("It's Halloween!"));
+    public void inTheMiddle() {
+        String test = "Ban[ana";
+        assertFalse(BalancedBrackets.hasBalancedBrackets(test));
     }
 
     @Test
-    public void testBracketsWithWordsIsTrue(){
-        assertTrue(BalancedBrackets.hasBalancedBrackets("[It's Halloween!]"));
-    }
-    @Test
-    public void testBracketsWithWordsOOOIsFalse(){
-        assertFalse(BalancedBrackets.hasBalancedBrackets("]It's Halloween!["));
-    }
-    @Test
-    public void testBracketsInMiddleOfWordsFalse(){
-        assertFalse(BalancedBrackets.hasBalancedBrackets("It's ]Halloween[!"));
+    public void unbalanced() {
+        String unbalancedString = "][";
+        assertFalse(BalancedBrackets.hasBalancedBrackets(unbalancedString));
     }
 
     @Test
-    public void testBracketsInMiddleOfWordsTrue(){
-        assertTrue(BalancedBrackets.hasBalancedBrackets("It's [Halloween]!"));
+    public void unbalancedInString() {
+        String launch = "Launch]Code[";
+        assertFalse(BalancedBrackets.hasBalancedBrackets(launch));
     }
 
     @Test
-    public void UnevenBracketsWithWordsIsFalse(){
-        assertFalse(BalancedBrackets.hasBalancedBrackets("It'[s [Halloween]!"));
+    public void emptyString() {
+        String empty = "";
+        assertTrue(BalancedBrackets.hasBalancedBrackets(empty));
     }
-
 
 }
